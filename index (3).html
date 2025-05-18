@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHA DREAM - Cửa hàng đồ bóng đá chính hãng</title>
+    <!-- Thêm thư viện EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // Khởi tạo EmailJS với Public Key của bạn
+            emailjs.init("YOUR_PUBLIC_KEY");
+        })();
+    </script>
+    <style>
+        /* CSS code giữ nguyên */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth; /* Thêm cuộn mượt mà */
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background-color: #0a5c36;
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #ffcc00;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer; /* Thêm con trỏ để hiển thị là có thể nhấp */
+        }
+        
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1540379708242-14a809bef941?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ffcc00;
+            color: #333;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            cursor: pointer; /* Thêm con trỏ để hiển thị là có thể nhấp */
+        }
+        
+        .btn:hover {
+            background-color: #e6b800;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #0a5c36;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .product-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #0a5c36;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .seller-info {
+            background-color: #0a5c36;
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .seller-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .seller-details {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .seller-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .seller-image img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        
+        .seller-details h2 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .seller-details p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .contact-info {
+            margin-top: 1.5rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            animation: modalopen 0.5s;
+        }
+        
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #333;
+        }
+        
+        .modal-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .modal-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .modal-specs {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .modal-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #0a5c36;
+            margin-bottom: 1rem;
+        }
+        
+        .spec-item {
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .spec-item strong {
+            display: inline-block;
+            width: 120px;
+        }
+        
+        .buy-btn {
+            display: inline-block;
+            background-color: #0a5c36;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s;
+        }
+        
+        .buy-btn:hover {
+            background-color: #084026;
+        }
+        
+        /* Thêm padding-top cho các phần để tránh bị che khuất bởi header */
+        section[id] {
+            scroll-margin-top: 70px; /* Thêm margin khi cuộn đến phần này */
+        }
+        
+        /* Checkout Form Styles */
+        .checkout-modal {
+            display: none;
+            position: fixed;
+            z-index: 1100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .checkout-content {
+            background-color: white;
+            margin: 3% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 900px;
+            width: 90%;
+            position: relative;
+            animation: modalopen 0.5s;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .checkout-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .checkout-title {
+            font-size: 1.8rem;
+            color: #0a5c36;
+        }
+        
+        .close-checkout {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #333;
+        }
+        
+        .checkout-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .checkout-left {
+            flex: 3;
+            min-width: 300px;
+        }
+        
+        .checkout-right {
+            flex: 2;
+            min-width: 300px;
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .section-heading {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+            color: #0a5c36;
+        }
+        
+        .order-summary {
+            margin-bottom: 1.5rem;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-item-name {
+            font-weight: 500;
+        }
+        
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #ddd;
+        }
+        
+        .payment-methods {
+            margin-bottom: 1.5rem;
+        }
+        
+        .payment-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        
+        .payment-method input {
+            margin-right: 0.5rem;
+        }
+        
+        .submit-btn {
+            background-color: #0a5c36;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #084026;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .success-message h2 {
+            color: #0a5c36;
+            margin-bottom: 1rem;
+        }
+        
+        .success-message p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .success-icon {
+            font-size: 5rem;
+            color: #0a5c36;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Thêm CSS cho loading spinner */
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #0a5c36;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .checkout-content {
+                margin: 0;
+                width: 100%;
+                height: 100%;
+                max-height: 100%;
+                border-radius: 0;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">DHA <span>DREAM</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="nav-link">Trang chủ</a></li>
+                    <li><a href="#products" class="nav-link">Sản phẩm</a></li>
+                    <li><a href="#seller" class="nav-link">Về chúng tôi</a></li>
+                    <li><a href="#contact" class="nav-link">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Đồ bóng đá chính hãng</h1>
+            <p>Cung cấp các sản phẩm bóng đá chất lượng cao từ các thương hiệu nổi tiếng thế giới. Đảm bảo chính hãng, giá tốt nhất thị trường.</p>
+            <a href="#products" class="btn nav-link">Xem sản phẩm</a>
+        </div>
+    </section>
+    
+    <section class="container" id="products">
+        <h2 class="section-title">Sản phẩm nổi bật</h2>
+        <div class="products">
+            <!-- Sản phẩm 1 -->
+            <div class="product-card" data-id="1">
+                <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/17c9cb39-4a80-4a39-a61f-cea350e80c20/mercurial-superfly-8-elite-fg-football-boot-hc6lmZ.png" alt="Giày Nike Mercurial" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Giày Nike Mercurial Superfly 8</h3>
+                    <p class="product-price">2.500.000₫</p>
+                    <p class="product-description">Giày đá bóng chính hãng Nike, phiên bản mới nhất dành cho cầu thủ tốc độ.</p>
+                </div>
+            </div>
+            
+            <!-- Sản phẩm 2 -->
+            <div class="product-card" data-id="2">
+                <img src="https://assets.adidas.com/images/w_600,f_auto,q_auto/d7688973326b4a0cb539acbb011e5d6e_9366/Bong_UEFA_Champions_League_Pro_trang_GT7788_01_standard.jpg" alt="Bóng Adidas Champions League" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Bóng Adidas Champions League</h3>
+                    <p class="product-price">1.800.000₫</p>
+                    <p class="product-description">Bóng đá chính hãng Adidas, mẫu được sử dụng trong giải Champions League.</p>
+                </div>
+            </div>
+            
+            <!-- Sản phẩm 3 -->
+            <div class="product-card" data-id="3">
+                <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/a3f4ebee-6b51-4e9f-b164-35f3f9fa7f93/fc-barcelona-2023-24-stadium-home-football-shirt-XZVfmT.png" alt="Áo đấu Barcelona" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Áo đấu Barcelona 2023/24</h3>
+                    <p class="product-price">950.000₫</p>
+                    <p class="product-description">Áo đấu sân nhà chính hãng của CLB Barcelona mùa giải 2023/24.</p>
+                </div>
+            </div>
+            
+            <!-- Sản phẩm 4 -->
+            <div class="product-card" data-id="4">
+                <img src="https://www.reusch.com/media/image/e3/a9/a9/5170200-7083_1.jpg" alt="Găng tay thủ môn" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Găng tay thủ môn Reusch Pro</h3>
+                    <p class="product-price">1.200.000₫</p>
+                    <p class="product-description">Găng tay thủ môn chuyên nghiệp, công nghệ bắt dính vượt trội.</p>
+                </div>
+            </div>
+            
+            <!-- Sản phẩm 5 -->
+            <div class="product-card" data-id="5">
+                <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/e0a4fe7e-8a3e-4a58-8258-49a7d0d0a123/grip-strike-light-crew-football-socks-Vv4bRm.png" alt="Tất bóng đá" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Tất bóng đá Nike Grip Strike</h3>
+                    <p class="product-price">350.000₫</p>
+                    <p class="product-description">Tất bóng đá cao cấp với công nghệ chống trượt, thoáng khí.</p>
+                </div>
+            </div>
+            
+            <!-- Sản phẩm 6 -->
+            <div class="product-card" data-id="6">
+                <img src="https://assets.adidas.com/images/w_600,f_auto,q_auto/c0d9cca9e0b54f3bb7f3af1e00a3363a_9366/Ao_Dau_San_Nha_Manchester_United_23-24_DjE_mau_IM4120_01_laydown.jpg" alt="Áo đấu Manchester United" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Áo đấu Manchester United 2023/24</h3>
+                    <p class="product-price">950.000₫</p>
+                    <p class="product-description">Áo đấu sân nhà chính hãng của CLB Manchester United mùa giải 2023/24.</p>
+                </div>
+            </div>
+            
+            <!-- Sản phẩm 7 -->
+            <div class="product-card" data-id="7">
+                <img src="https://assets.adidas.com/images/w_600,f_auto,q_auto/c0e30bc0f9a94b9b9e9aaf1f00a5c5a6_9366/Giay_Bong_Da_Predator_Edge.3_Firm_Ground_DjE_mau_GW0987_01_standard.jpg" alt="Giày Adidas Predator" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Giày Adidas Predator Edge</h3>
+                    <p class="product-price">2.300.000₫</p>
+                    <p class="product-description">Giày đá bóng chính hãng Adidas, thiết kế dành cho cầu thủ kiểm soát bóng.</p>
+                </div>
+            </div>
+            
+            <!-- Sản phẩm 8 -->
+            <div class="product-card" data-id="8">
+                <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/a0b0a310-d256-4b3e-a069-973a158f5834/academy-team-football-backpack-XlKlGV.png" alt="Balo Nike" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Balo Nike Academy Team</h3>
+                    <p class="product-price">850.000₫</p>
+                    <p class="product-description">Balo thể thao chính hãng Nike, nhiều ngăn, chống thấm nước.</p>
+                </div>
+            </div>
+            
+            <!-- Sản phẩm 9 -->
+            <div class="product-card" data-id="9">
+                <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/657863/06/mod01/fnd/PNA/fmt/png/teamGOAL-23-Training-Men's-Football-Tracksuit" alt="Quần áo tập luyện" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Bộ quần áo tập luyện Puma</h3>
+                    <p class="product-price">1.100.000₫</p>
+                    <p class="product-description">Bộ quần áo tập luyện chính hãng Puma, chất liệu thoáng mát.</p>
+                </div>
+            </div>
+            
+            <!-- Sản phẩm 10 -->
+            <div class="product-card" data-id="10">
+                <img src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/083311/01/fnd/PNA/fmt/png/teamFINAL-21.1-FIFA-Quality-Pro-Football" alt="Bóng đá Puma" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">Bóng đá Puma TeamFINAL</h3>
+                    <p class="product-price">1.500.000₫</p>
+                    <p class="product-description">Bóng đá chính hãng Puma, chất lượng cao, độ bền tốt.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="seller-info" id="seller">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Về chúng tôi</h2>
+            <div class="seller-container">
+                <div class="seller-details">
+                    <h2>DHA DREAM - Cửa hàng đồ bóng đá chính hãng</h2>
+                    <p>DHA DREAM là cửa hàng chuyên cung cấp các sản phẩm bóng đá chính hãng từ các thương hiệu nổi tiếng như Nike, Adidas, Puma, và nhiều thương hiệu khác.</p>
+                    <p>Với hơn 10 năm kinh nghiệm trong lĩnh vực bán lẻ đồ thể thao, chúng tôi tự hào là đối tác ủy quyền chính thức của nhiều thương hiệu lớn, đảm bảo mang đến cho khách hàng những sản phẩm chất lượng cao với giá cả hợp lý.</p>
+                    <div class="contact-info" id="contact">
+                        <h3>Thông tin liên hệ:</h3>
+                        <p><strong>Địa chỉ:</strong> DoanAnh HouseHouse</p>
+                        <p><strong>Điện thoại:</strong> SceretSceret</p>
+                        <p><strong>Email:</strong> info@dhadream.vn</p>
+                        <p><strong>Giờ mở cửa:</strong> 8:00 - 21:00 (Thứ 2 - Chủ nhật)</p>
+                    </div>
+                </div>
+                <div class="seller-image">
+                    <img src="https://images.unsplash.com/photo-1581922814484-0b48460b7010?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cửa hàng DHA DREAM">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2023 DHA DREAM. Tất cả các quyền được bảo lưu.</p>
+    </footer>
+    
+    <!-- Modal chi tiết sản phẩm -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img src="/placeholder.svg" alt="" class="modal-image" id="modal-image">
+            <div class="modal-details">
+                <div class="modal-info">
+                    <h2 id="modal-name"></h2>
+                    <p class="modal-price" id="modal-price"></p>
+                    <p id="modal-description"></p>
+                    <a href="#" class="buy-btn" id="buy-now-btn">Mua ngay</a>
+                </div>
+                <div class="modal-specs">
+                    <h3>Thông số kỹ thuật</h3>
+                    <div id="modal-specs"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal thanh toán -->
+    <div class="checkout-modal" id="checkout-modal">
+        <div class="checkout-content">
+            <div class="checkout-header">
+                <h2 class="checkout-title">Thông tin đặt hàng</h2>
+                <span class="close-checkout">&times;</span>
+            </div>
+            
+            <div id="checkout-form-container">
+                <form id="checkout-form" class="checkout-form">
+                    <div class="checkout-left">
+                        <h3 class="section-heading">Thông tin khách hàng</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullname">Họ và tên <span class="required">*</span></label>
+                                <input type="text" id="fullname" name="fullname" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Số điện thoại <span class="required">*</span></label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <h3 class="section-heading">Địa chỉ giao hàng</h3>
+                        <div class="form-group">
+                            <label for="address">Địa chỉ <span class="required">*</span></label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">Tỉnh/Thành phố <span class="required">*</span></label>
+                                <select id="city" name="city" required>
+                                    <option value="">Chọn Tỉnh/Thành phố</option>
+                                    <option value="HCM">TP. Hồ Chí Minh</option>
+                                    <option value="HN">Hà Nội</option>
+                                    <option value="DN">Đà Nẵng</option>
+                                    <option value="CT">Cần Thơ</option>
+                                    <option value="HP">Hải Phòng</option>
+                                    <option value="other">Khác</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="district">Quận/Huyện <span class="required">*</span></label>
+                                <input type="text" id="district" name="district" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="note">Ghi chú</label>
+                            <textarea id="note" name="note" placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn."></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-right">
+                        <h3 class="section-heading">Đơn hàng của bạn</h3>
+                        <div class="order-summary">
+                            <div class="order-item">
+                                <span class="order-item-name" id="checkout-product-name">Tên sản phẩm</span>
+                                <span id="checkout-product-price">0₫</span>
+                            </div>
+                            <div class="order-item">
+                                <span>Phí vận chuyển</span>
+                                <span>30.000₫</span>
+                            </div>
+                            <div class="order-total">
+                                <span>Tổng cộng</span>
+                                <span id="checkout-total">0₫</span>
+                            </div>
+                        </div>
+                        
+                        <h3 class="section-heading">Phương thức thanh toán</h3>
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <input type="radio" id="cod" name="payment" value="cod" checked>
+                                <label for="cod">Thanh toán khi nhận hàng (COD)</label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" id="bank-transfer" name="payment" value="bank-transfer">
+                                <label for="bank-transfer">Chuyển khoản ngân hàng</label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" id="momo" name="payment" value="momo">
+                                <label for="momo">Ví điện tử MoMo</label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" id="credit-card" name="payment" value="credit-card">
+                                <label for="credit-card">Thẻ tín dụng/Ghi nợ</label>
+                            </div>
+                        </div>
+                        
+                        <div class="loading-spinner" id="loading-spinner">
+                            <div class="spinner"></div>
+                            <p>Đang xử lý đơn hàng...</p>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Đặt hàng</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="success-message" id="success-message">
+                <div class="success-icon">✓</div>
+                <h2>Đặt hàng thành công!</h2>
+                <p>Cảm ơn bạn đã đặt hàng tại DHA DREAM. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất để xác nhận đơn hàng.</p>
+                <a href="#" class="btn" id="continue-shopping">Tiếp tục mua sắm</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Dữ liệu sản phẩm
+        const products = [
+            {
+                id: 1,
+                name: "Giày Nike Mercurial Superfly 8",
+                price: "2.500.000₫",
+                description: "Giày đá bóng chính hãng Nike, phiên bản mới nhất dành cho cầu thủ tốc độ. Thiết kế nhẹ, ôm chân và tạo cảm giác thoải mái khi di chuyển.",
+                image: "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/17c9cb39-4a80-4a39-a61f-cea350e80c20/mercurial-superfly-8-elite-fg-football-boot-hc6lmZ.png",
+                specs: [
+                    { name: "Thương hiệu", value: "Nike" },
+                    { name: "Mẫu", value: "Mercurial Superfly 8" },
+                    { name: "Loại sân", value: "Sân cỏ tự nhiên (FG)" },
+                    { name: "Chất liệu", value: "Flyknit, Dynamic Fit Collar" },
+                    { name: "Trọng lượng", value: "190g" },
+                    { name: "Kích cỡ", value: "39-44" },
+                    { name: "Màu sắc", value: "Đen/Cam" },
+                    { name: "Bảo hành", value: "12 tháng" }
+                ]
+            },
+            {
+                id: 2,
+                name: "Bóng Adidas Champions League",
+                price: "1.800.000₫",
+                description: "Bóng đá chính hãng Adidas, mẫu được sử dụng trong giải Champions League. Thiết kế đẹp mắt, độ nảy tốt, phù hợp với các trận đấu chuyên nghiệp.",
+                image: "https://assets.adidas.com/images/w_600,f_auto,q_auto/d7688973326b4a0cb539acbb011e5d6e_9366/Bong_UEFA_Champions_League_Pro_trang_GT7788_01_standard.jpg",
+                specs: [
+                    { name: "Thương hiệu", value: "Adidas" },
+                    { name: "Mẫu", value: "Champions League Official Match Ball" },
+                    { name: "Chất liệu", value: "100% Polyurethane" },
+                    { name: "Kích thước", value: "Size 5" },
+                    { name: "Công nghệ", value: "Thermally bonded seamless surface" },
+                    { name: "Chứng nhận", value: "FIFA Quality Pro" },
+                    { name: "Màu sắc", value: "Trắng/Xanh/Đỏ" },
+                    { name: "Bảo hành", value: "12 tháng" }
+                ]
+            },
+            {
+                id: 3,
+                name: "Áo đấu Barcelona 2023/24",
+                price: "950.000₫",
+                description: "Áo đấu sân nhà chính hãng của CLB Barcelona mùa giải 2023/24. Thiết kế đẹp mắt với các sọc đỏ và xanh truyền thống, chất liệu thoáng mát.",
+                image: "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/a3f4ebee-6b51-4e9f-b164-35f3f9fa7f93/fc-barcelona-2023-24-stadium-home-football-shirt-XZVfmT.png",
+                specs: [
+                    { name: "Thương hiệu", value: "Nike" },
+                    { name: "Mẫu", value: "Barcelona Home 2023/24" },
+                    { name: "Chất liệu", value: "100% Polyester, Dri-FIT" },
+                    { name: "Loại", value: "Áo đấu sân nhà" },
+                    { name: "Công nghệ", value: "Nike Breathe, Dri-FIT" },
+                    { name: "Kích cỡ", value: "S, M, L, XL, XXL" },
+                    { name: "Màu sắc", value: "Xanh/Đỏ" },
+                    { name: "Bảo hành", value: "6 tháng" }
+                ]
+            },
+            {
+                id: 4,
+                name: "Găng tay thủ môn Reusch Pro",
+                price: "1.200.000₫",
+                description: "Găng tay thủ môn chuyên nghiệp, công nghệ bắt dính vượt trội. Thiết kế ôm tay, bảo vệ tốt các ngón tay và cổ tay khi bắt bóng.",
+                image: "https://www.reusch.com/media/image/e3/a9/a9/5170200-7083_1.jpg",
+                specs: [
+                    { name: "Thương hiệu", value: "Reusch" },
+                    { name: "Mẫu", value: "Pro M1" },
+                    { name: "Chất liệu", value: "Latex, Polyester, Elastane" },
+                    { name: "Công nghệ", value: "Ortho-Tec, AirVentSystem" },
+                    { name: "Độ bám", value: "Cao" },
+                    { name: "Kích cỡ", value: "7, 8, 9, 10, 11" },
+                    { name: "Màu sắc", value: "Đen/Xanh" },
+                    { name: "Bảo hành", value: "6 tháng" }
+                ]
+            },
+            {
+                id: 5,
+                name: "Tất bóng đá Nike Grip Strike",
+                price: "350.000₫",
+                description: "Tất bóng đá cao cấp với công nghệ chống trượt, thoáng khí. Thiết kế ôm chân, tạo cảm giác thoải mái khi di chuyển.",
+                image: "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/e0a4fe7e-8a3e-4a58-8258-49a7d0d0a123/grip-strike-light-crew-football-socks-Vv4bRm.png",
+                specs: [
+                    { name: "Thương hiệu", value: "Nike" },
+                    { name: "Mẫu", value: "Grip Strike" },
+                    { name: "Chất liệu", value: "66% Nylon, 30% Polyester, 4% Elastane" },
+                    { name: "Công nghệ", value: "Nike Grip, Dri-FIT" },
+                    { name: "Chiều dài", value: "Đến đầu gối" },
+                    { name: "Kích cỡ", value: "S, M, L, XL" },
+                    { name: "Màu sắc", value: "Đen" },
+                    { name: "Bảo hành", value: "3 tháng" }
+                ]
+            },
+            {
+                id: 6,
+                name: "Áo đấu Manchester United 2023/24",
+                price: "950.000₫",
+                description: "Áo đấu sân nhà chính hãng của CLB Manchester United mùa giải 2023/24. Thiết kế đẹp mắt với màu đỏ truyền thống, chất liệu thoáng mát.",
+                image: "https://assets.adidas.com/images/w_600,f_auto,q_auto/c0d9cca9e0b54f3bb7f3af1e00a3363a_9366/Ao_Dau_San_Nha_Manchester_United_23-24_DjE_mau_IM4120_01_laydown.jpg",
+                specs: [
+                    { name: "Thương hiệu", value: "Adidas" },
+                    { name: "Mẫu", value: "Manchester United Home 2023/24" },
+                    { name: "Chất liệu", value: "100% Polyester, AEROREADY" },
+                    { name: "Loại", value: "Áo đấu sân nhà" },
+                    { name: "Công nghệ", value: "AEROREADY, HEAT.RDY" },
+                    { name: "Kích cỡ", value: "S, M, L, XL, XXL" },
+                    { name: "Màu sắc", value: "Đỏ" },
+                    { name: "Bảo hành", value: "6 tháng" }
+                ]
+            },
+            {
+                id: 7,
+                name: "Giày Adidas Predator Edge",
+                price: "2.300.000₫",
+                description: "Giày đá bóng chính hãng Adidas, thiết kế dành cho cầu thủ kiểm soát bóng. Công nghệ Zone Skin giúp tăng độ bám khi chạm bóng.",
+                image: "https://assets.adidas.com/images/w_600,f_auto,q_auto/c0e30bc0f9a94b9b9e9aaf1f00a5c5a6_9366/Giay_Bong_Da_Predator_Edge.3_Firm_Ground_DjE_mau_GW0987_01_standard.jpg",
+                specs: [
+                    { name: "Thương hiệu", value: "Adidas" },
+                    { name: "Mẫu", value: "Predator Edge" },
+                    { name: "Loại sân", value: "Sân cỏ tự nhiên (FG)" },
+                    { name: "Chất liệu", value: "Primeknit, Control Zone" },
+                    { name: "Trọng lượng", value: "210g" },
+                    { name: "Kích cỡ", value: "39-44" },
+                    { name: "Màu sắc", value: "Đen/Đỏ" },
+                    { name: "Bảo hành", value: "12 tháng" }
+                ]
+            },
+            {
+                id: 8,
+                name: "Balo Nike Academy Team",
+                price: "850.000₫",
+                description: "Balo thể thao chính hãng Nike, nhiều ngăn, chống thấm nước. Thiết kế rộng rãi, có thể đựng được nhiều đồ dùng thể thao.",
+                image: "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/a0b0a310-d256-4b3e-a069-973a158f5834/academy-team-football-backpack-XlKlGV.png",
+                specs: [
+                    { name: "Thương hiệu", value: "Nike" },
+                    { name: "Mẫu", value: "Academy Team" },
+                    { name: "Chất liệu", value: "100% Polyester" },
+                    { name: "Kích thước", value: "48cm x 33cm x 18cm" },
+                    { name: "Dung tích", value: "30L" },
+                    { name: "Số ngăn", value: "3 ngăn chính, 2 ngăn phụ" },
+                    { name: "Màu sắc", value: "Đen" },
+                    { name: "Bảo hành", value: "12 tháng" }
+                ]
+            },
+            {
+                id: 9,
+                name: "Bộ quần áo tập luyện Puma",
+                price: "1.100.000₫",
+                description: "Bộ quần áo tập luyện chính hãng Puma, chất liệu thoáng mát. Thiết kế thời trang, phù hợp cho các buổi tập luyện và đi chơi.",
+                image: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/657863/06/mod01/fnd/PNA/fmt/png/teamGOAL-23-Training-Men's-Football-Tracksuit",
+                specs: [
+                    { name: "Thương hiệu", value: "Puma" },
+                    { name: "Mẫu", value: "teamGOAL 23 Training" },
+                    { name: "Chất liệu", value: "100% Polyester, dryCELL" },
+                    { name: "Bộ gồm", value: "Áo thun và quần short" },
+                    { name: "Công nghệ", value: "dryCELL" },
+                    { name: "Kích cỡ", value: "S, M, L, XL, XXL" },
+                    { name: "Màu sắc", value: "Xanh navy" },
+                    { name: "Bảo hành", value: "6 tháng" }
+                ]
+            },
+            {
+                id: 10,
+                name: "Bóng đá Puma TeamFINAL",
+                price: "1.500.000₫",
+                description: "Bóng đá chính hãng Puma, chất lượng cao, độ bền tốt. Thiết kế đẹp mắt, phù hợp cho các trận đấu và tập luyện.",
+                image: "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_600,h_600/global/083311/01/fnd/PNA/fmt/png/teamFINAL-21.1-FIFA-Quality-Pro-Football",
+                specs: [
+                    { name: "Thương hiệu", value: "Puma" },
+                    { name: "Mẫu", value: "TeamFINAL 21.1" },
+                    { name: "Chất liệu", value: "Polyurethane" },
+                    { name: "Kích thước", value: "Size 5" },
+                    { name: "Công nghệ", value: "3D textured surface" },
+                    { name: "Chứng nhận", value: "FIFA Quality" },
+                    { name: "Màu sắc", value: "Trắng/Đỏ/Đen" },
+                    { name: "Bảo hành", value: "12 tháng" }
+                ]
+            }
+        ];
+        
+        // Lấy các phần tử DOM
+        const modal = document.getElementById('product-modal');
+        const closeModal = document.querySelector('.close-modal');
+        const modalImage = document.getElementById('modal-image');
+        const modalName = document.getElementById('modal-name');
+        const modalPrice = document.getElementById('modal-price');
+        const modalDescription = document.getElementById('modal-description');
+        const modalSpecs = document.getElementById('modal-specs');
+        const buyNowBtn = document.getElementById('buy-now-btn');
+        
+        // Checkout Modal Elements
+        const checkoutModal = document.getElementById('checkout-modal');
+        const closeCheckout = document.querySelector('.close-checkout');
+        const checkoutProductName = document.getElementById('checkout-product-name');
+        const checkoutProductPrice = document.getElementById('checkout-product-price');
+        const checkoutTotal = document.getElementById('checkout-total');
+        const checkoutForm = document.getElementById('checkout-form');
+        const checkoutFormContainer = document.getElementById('checkout-form-container');
+        const successMessage = document.getElementById('success-message');
+        const continueShoppingBtn = document.getElementById('continue-shopping');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        
+        // Biến lưu trữ sản phẩm hiện tại
+        let currentProduct = null;
+        
+        // Thêm sự kiện click cho các sản phẩm
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const productId = parseInt(card.getAttribute('data-id'));
+                const product = products.find(p => p.id === productId);
+                
+                if (product) {
+                    currentProduct = product;
+                    
+                    // Cập nhật thông tin sản phẩm trong modal
+                    modalImage.src = product.image;
+                    modalImage.alt = product.name;
+                    modalName.textContent = product.name;
+                    modalPrice.textContent = product.price;
+                    modalDescription.textContent = product.description;
+                    
+                    // Cập nhật thông số kỹ thuật
+                    modalSpecs.innerHTML = '';
+                    product.specs.forEach(spec => {
+                        const specItem = document.createElement('div');
+                        specItem.className = 'spec-item';
+                        specItem.innerHTML = `<strong>${spec.name}:</strong> ${spec.value}`;
+                        modalSpecs.appendChild(specItem);
+                    });
+                    
+                    // Hiển thị modal
+                    modal.style.display = 'block';
+                }
+            });
+        });
+        
+        // Đóng modal khi nhấp vào nút đóng
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        
+        // Đóng modal khi nhấp vào bên ngoài modal
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+            if (event.target === checkoutModal) {
+                checkoutModal.style.display = 'none';
+                resetCheckoutForm();
+            }
+        });
+        
+        // Xử lý cuộn mượt mà khi nhấp vào các liên kết điều hướng
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Cuộn đến phần tử mục tiêu
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Xử lý khi nhấp vào nút "Mua ngay"
+        buyNowBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            if (currentProduct) {
+                // Cập nhật thông tin sản phẩm trong form thanh toán
+                checkoutProductName.textContent = currentProduct.name;
+                checkoutProductPrice.textContent = currentProduct.price;
+                
+                // Tính tổng tiền (giá sản phẩm + phí vận chuyển)
+                const productPrice = parseFloat(currentProduct.price.replace(/\D/g, ''));
+                const shippingFee = 30000;
+                const total = productPrice + shippingFee;
+                checkoutTotal.textContent = total.toLocaleString() + '₫';
+                
+                // Đóng modal sản phẩm
+                modal.style.display = 'none';
+                
+                // Hiển thị modal thanh toán
+                checkoutModal.style.display = 'block';
+                checkoutFormContainer.style.display = 'block';
+                successMessage.style.display = 'none';
+            }
+        });
+        
+        // Đóng modal thanh toán khi nhấp vào nút đóng
+        closeCheckout.addEventListener('click', () => {
+            checkoutModal.style.display = 'none';
+            resetCheckoutForm();
+        });
+        
+        // Xử lý khi gửi form thanh toán
+        checkoutForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Kiểm tra form hợp lệ
+            if (this.checkValidity()) {
+                // Hiển thị loading spinner
+                loadingSpinner.style.display = 'block';
+                
+                // Lấy dữ liệu từ form
+                const formData = {
+                    fullname: document.getElementById('fullname').value,
+                    phone: document.getElementById('phone').value,
+                    email: document.getElementById('email').value,
+                    address: document.getElementById('address').value,
+                    city: document.getElementById('city').value,
+                    district: document.getElementById('district').value,
+                    note: document.getElementById('note').value,
+                    payment: document.querySelector('input[name="payment"]:checked').value,
+                    product: currentProduct ? currentProduct.name : '',
+                    price: currentProduct ? currentProduct.price : '',
+                    total: document.getElementById('checkout-total').textContent,
+                    orderDate: new Date().toLocaleString()
+                };
+                
+                // Gửi email thông qua EmailJS
+                emailjs.send(
+                    'service_dha04', // Thay thế bằng Service ID của bạn
+                    'template_dha04', // Thay thế bằng Template ID của bạn
+                    {
+                        to_name: 'DHA DREAM',
+                        from_name: formData.fullname,
+                        from_email: formData.email,
+                        phone: formData.phone,
+                        address: `${formData.address}, ${formData.district}, ${formData.city}`,
+                        product: formData.product,
+                        price: formData.price,
+                        total: formData.total,
+                        payment_method: formData.payment,
+                        note: formData.note,
+                        order_date: formData.orderDate
+                    }
+                ).then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    //   response.status, response.text);
+                    
+                    // Ẩn loading spinner
+                    loadingSpinner.style.display = 'none';
+                    
+                    // Hiển thị thông báo thành công
+                    checkoutFormContainer.style.display = 'none';
+                    successMessage.style.display = 'block';
+                }).catch(function(error) {
+                    console.log('FAILED...', error);
+                    
+                    // Ẩn loading spinner
+                    loadingSpinner.style.display = 'none';
+                    
+                    // Hiển thị thông báo lỗi
+                    alert('Có lỗi xảy ra khi gửi đơn hàng. Vui lòng thử lại sau.');
+                });
+            } else {
+                // Hiển thị thông báo lỗi mặc định của trình duyệt
+                this.reportValidity();
+            }
+        });
+        
+        // Xử lý khi nhấp vào nút "Tiếp tục mua sắm"
+        continueShoppingBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Đóng modal thanh toán
+            checkoutModal.style.display = 'none';
+            resetCheckoutForm();
+        });
+        
+        // Hàm reset form thanh toán
+        function resetCheckoutForm() {
+            checkoutForm.reset();
+            checkoutFormContainer.style.display = 'block';
+            successMessage.style.display = 'none';
+            loadingSpinner.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
